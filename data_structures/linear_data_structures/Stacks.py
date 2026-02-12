@@ -20,7 +20,10 @@ stack.append(3)
 # print("\n")
 
 
-def ide_systax_check(syn_string):
+def ide_systax_check(syn_string: str):
+    if type(syn_string) != str:
+        print("False")
+        return False
     string_stack = []
     syntax_push = ["(", "{", "["]
     syntac_pop = [")", "}", "]"]
@@ -40,7 +43,9 @@ def ide_systax_check(syn_string):
     if len(string_stack) == 0:
         print("True")
         return True
-    # print(string_stack)
+    else:
+        print("False")
+        return False
 
 
 def test():
@@ -55,4 +60,6 @@ def test():
 ide_systax_check("if (a > b) { print(c); } ")
 ide_systax_check("if (a > b} { print(c); } ")
 ide_systax_check("if (a > b)} { print(c); } ")
+ide_systax_check("if (a > b)( { print(c); } ")
+ide_systax_check(5)
 # test()
